@@ -7,13 +7,16 @@ interface SearchInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const SearchInput = ({
+export const SearchPageInput = ({
   onSubmit,
   value,
   onChange,
 }: SearchInputProps) => {
   return (
-    <form className="flex flex-col sm:flex-row gap-4" onSubmit={onSubmit}>
+    <form
+      className="flex flex-col sm:flex-row gap-4 w-full max-w-[900px] mx-auto mt-12"
+      onSubmit={onSubmit}
+    >
       <input
         type="text"
         placeholder="Search for a movie title..."

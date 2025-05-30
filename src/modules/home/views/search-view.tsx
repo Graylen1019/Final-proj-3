@@ -1,30 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { SearchInput } from "../components/search-input";
 import { ResultsSection } from "../sections/results-section";
 import { useRouter } from "next/navigation";
+import { SearchPageInput } from "../components/search-page-input";
 
 export const SearchView = () => {
-      // State to store the user's search term in the input field.
-      const [searchTerm, setSearchTerm] = useState("");
-      // Initialize the Next.js router for programmatic navigation.
-      const router = useRouter();
-    
-      // Function to handle the form submission on the home page.
-      const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-    
-        // If a search term is entered, navigate to the /search page with the query parameter.
-        if (searchTerm.trim()) {
-            router.push("/")
-          router.push(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
-        }
-      };
+  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (searchTerm.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
 
   return (
-    <div>
-      <SearchInput
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-100 p-4 sm:p-8 flex flex-col items-center font-sans gap-6">
+      <SearchPageInput
         onSubmit={handleSearchSubmit}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}

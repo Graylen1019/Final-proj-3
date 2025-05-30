@@ -1,12 +1,11 @@
 import { SearchView } from "@/modules/home/views/search-view";
 
 const Page = () => {
-    return ( 
+  return (
+    <div>
+      <SearchView />
+    </div>
+  );
+};
 
-        <div>
-            <SearchView />
-        </div>
-     );
-}
- 
 export default Page;

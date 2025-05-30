@@ -1,9 +1,9 @@
-import { HomeNavbar } from "../components/home-navbar"
+import { HomeNavbar } from "../components/home-navbar";
 
 export const HomeView = () => {
-    return (
-        <div>
-            <HomeNavbar />
-        </div>
-    )
-}
+  return (
+    <div>
+      <HomeNavbar />
+    </div>
+  );
+};

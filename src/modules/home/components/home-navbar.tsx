@@ -5,20 +5,15 @@ import { useRouter } from "next/navigation";
 import { SearchInput } from "@/modules/home/components/search-input";
 
 export const HomeNavbar = () => {
-  // State to store the user's search term in the input field.
   const [searchTerm, setSearchTerm] = useState("");
-  // Initialize the Next.js router for programmatic navigation.
   const router = useRouter();
 
-  // Function to handle the form submission on the home page.
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // If a search term is entered, navigate to the /search page with the query parameter.
     if (searchTerm.trim()) {
       router.push(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
     }
-    
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-100 p-4 sm:p-8 flex flex-col items-center justify-center font-sans">
@@ -37,4 +32,4 @@ export const HomeNavbar = () => {
       </div>
     </div>
   );
-}
+};
