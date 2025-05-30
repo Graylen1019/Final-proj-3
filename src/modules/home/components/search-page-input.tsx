@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
 
 interface SearchInputProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;

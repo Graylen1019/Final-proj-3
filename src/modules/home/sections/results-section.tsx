@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Movie {
   Title: string;
@@ -13,6 +14,14 @@ interface Movie {
 }
 
 export const ResultsSection = () => {
+  return (
+    <Suspense>
+      <ResultsSectionSuspense />
+    </Suspense>
+  );
+};
+
+const ResultsSectionSuspense = () => {
   const searchParams = useSearchParams();
   const searchTerm = searchParams.get("query") || "";
 
@@ -78,7 +87,7 @@ export const ResultsSection = () => {
     <div className="">
       <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-6 sm:p-8 space-y-6 border border-gray-700">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-8">
-          Search Results for "{searchTerm}"
+          Search Results for {searchTerm}
         </h1>
 
         {/* Display Loading, Error, or Results */}
@@ -98,7 +107,7 @@ export const ResultsSection = () => {
 
           {!loading && !error && movies.length === 0 && searchTerm.trim() && (
             <p className="text-gray-400 text-lg">
-              No results found for "{searchTerm}". Try a different title!
+              No results found for {searchTerm}. Try a different title!
             </p>
           )}
 
@@ -112,7 +121,7 @@ export const ResultsSection = () => {
                 >
                   <div className="bg-gray-700 rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out border border-gray-600 flex flex-col items-center text-center p-4 cursor-pointer">
                     {movie.Poster !== "N/A" ? (
-                      <img
+                      <Image
                         src={movie.Poster}
                         alt={movie.Title}
                         width={200}
