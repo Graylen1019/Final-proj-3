@@ -32,7 +32,6 @@ interface MovieDetail {
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function MovieDetailPage() {
   const params = useParams();
@@ -130,7 +129,7 @@ export default function MovieDetailPage() {
 
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
           {movie.Poster !== "N/A" ? (
-            <Image
+            <img
               src={movie.Poster}
               alt={movie.Title}
               width={300}

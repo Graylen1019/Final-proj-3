@@ -3,7 +3,6 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 
 interface Movie {
   Title: string;
@@ -121,7 +120,7 @@ const ResultsSectionSuspense = () => {
                 >
                   <div className="bg-gray-700 rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out border border-gray-600 flex flex-col items-center text-center p-4 cursor-pointer">
                     {movie.Poster !== "N/A" ? (
-                      <Image
+                      <img
                         src={movie.Poster}
                         alt={movie.Title}
                         width={200}
