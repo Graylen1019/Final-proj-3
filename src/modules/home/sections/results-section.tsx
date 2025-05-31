@@ -11,6 +11,7 @@ interface Movie {
   imdbID: string;
   Type: string;
   Poster: string;
+  count: string;
 }
 
 export const ResultsSection = () => {
@@ -22,8 +23,6 @@ export const ResultsSection = () => {
 };
 
 const ResultsSectionSuspense = () => {
-  
-
   const searchParams = useSearchParams();
   const searchTerm = searchParams.get("query") || "";
 
@@ -97,7 +96,7 @@ const ResultsSectionSuspense = () => {
       case "Z_A":
         sorted.sort((a, b) => b.Title.localeCompare(a.Title));
         break;
-        case "DESC":
+      case "DESC":
         sorted.sort((a, b) => Number(b.Year) - Number(a.Year));
         break;
       case "ASC":
@@ -107,18 +106,17 @@ const ResultsSectionSuspense = () => {
         break;
     }
     return sorted;
-
-  }, [movies, sort])
+  }, [movies, sort]);
 
   return (
     <div>
       <div>
-        <SortBy count={movies.length} sort={sort} onSortChange={setSort} />
+        <SortBy sort={sort} onSortChange={setSort} />
       </div>
       <div className="">
         <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-6 sm:p-8 space-y-6 border border-gray-700">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-8">
-            Search results for {searchTerm}
+            {movies.length} results for {searchTerm}
           </h1>
 
           {/* Display Loading, Error, or Results */}

@@ -1,4 +1,3 @@
-
 interface SearchInputProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   value: string;
